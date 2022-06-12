@@ -34,7 +34,7 @@ public class Database implements DatabaseConstants{
                     id INT AUTO_INCREMENT PRIMARY KEY,
                     infix_expression varchar(256) NOT NULL,
                     postfix_expression varchar(256) NOT NULL,
-                    result INT(12) NOT NULL
+                    result DOUBLE NOT NULL
                     );""");
             instance = new Database(connection);
         } catch (SQLException e) {

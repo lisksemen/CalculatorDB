@@ -56,7 +56,7 @@ public class Main {
                 ResultSet set = database.searchById(id);
                 CalculatedEntry entry = null;
                 if (set.next()) {
-                    entry = new CalculatedEntry(set.getInt("result"),
+                    entry = new CalculatedEntry(set.getDouble("result"),
                             set.getString("infix_expression"),
                             set.getString("postfix_expression"));
                 }
@@ -220,7 +220,7 @@ public class Main {
         while (set.next()) {
             System.out.println("id = " + set.getInt(1) +
                     " expression = " + set.getString(2) +
-                    " result = " + set.getInt(4));
+                    " result = " + set.getDouble(4));
         }
     }
 
