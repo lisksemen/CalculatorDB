@@ -30,7 +30,7 @@ public class Database implements DatabaseConstants{
             statement.execute("CREATE DATABASE IF NOT EXISTS " + DBNAME);
             statement.execute("USE " + DBNAME);
             statement.execute("""
-                    CREATE TABLE  calculated(
+                    CREATE TABLE IF NOT EXISTS calculated(
                     id INT AUTO_INCREMENT PRIMARY KEY,
                     infix_expression varchar(256) NOT NULL,
                     postfix_expression varchar(256) NOT NULL,
