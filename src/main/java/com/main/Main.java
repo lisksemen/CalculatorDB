@@ -25,7 +25,7 @@ public class Main {
                 System.out.println("5) Modify specified expression");
                 System.out.println("0) Exit");
                 switch (scanner.nextLine()) {
-                    case "1" -> calculateMenu(calculator, database, scanner);
+                    case "1" -> calculate(calculator, database, scanner);
                     case "2" -> listDatabase(database, scanner);
                     case "3" -> searchInDatabase(database, scanner);
                     case "4" -> deleteFromDatabase(database, scanner);
@@ -131,7 +131,6 @@ public class Main {
         }
         pause(scanner);
         clearScreen();
-
     }
 
     private static void deleteByIndex(Database database, Scanner scanner) {
@@ -166,6 +165,11 @@ public class Main {
         clearScreen();
     }
 
+    /**
+     * Asks user to create a query part like <2 or =3 to use in sql query
+     * @param scanner scanner to ask from
+     * @return query part
+     */
     private static String getQueryPart(Scanner scanner) {
         boolean exit = false;
         StringBuilder queryPart = new StringBuilder();
@@ -204,6 +208,10 @@ public class Main {
         return queryPart + "";
     }
 
+    /**
+     * Pauses until user press enter
+     * @param scanner scanner
+     */
     private static void pause(Scanner scanner) {
         System.out.println("Enter any line to return to the main menu");
         scanner.nextLine();
@@ -216,6 +224,11 @@ public class Main {
         clearScreen();
     }
 
+    /**
+     * Method to list everything from a result of a sql query
+     * @param set result to list
+     * @throws SQLException exception
+     */
     private static void listResultSet(ResultSet set) throws SQLException {
         while (set.next()) {
             System.out.println("id = " + set.getInt(1) +
@@ -224,7 +237,7 @@ public class Main {
         }
     }
 
-    private static void calculateMenu(Calculator calculator, Database database, Scanner scanner) throws SQLException {
+    private static void calculate(Calculator calculator, Database database, Scanner scanner) throws SQLException {
         while (true) {
             clearScreen();
             System.out.println("Please enter expression:");
@@ -250,6 +263,9 @@ public class Main {
         }
     }
 
+    /**
+     * Method to clear screen (just putting 20 \n in intellij idea)
+     */
     private static void clearScreen() {
         try {
             final String os = System.getProperty("os.name");

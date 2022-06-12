@@ -7,6 +7,10 @@ import java.sql.*;
 public class Database implements DatabaseConstants{
     private static Database instance;
 
+    /**
+     * Method to get proper instance of database
+     * @return Database instance
+     */
     public static Database getInstance(){
         if (instance == null) {
             try {
@@ -21,6 +25,9 @@ public class Database implements DatabaseConstants{
         return instance;
     }
 
+    /**
+     * Method to create schema and table if not exists
+     */
     private static void createDatabaseAndTable() {
         try {
             Driver driver = new com.mysql.cj.jdbc.Driver();
@@ -38,13 +45,18 @@ public class Database implements DatabaseConstants{
                     );""");
             instance = new Database(connection);
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Unable to create DB");
         }
     }
 
     private final Connection connection;
     private final Statement statement;
 
+    /**
+     * Constructor
+     * @param connection mysql connection
+     * @throws SQLException exception
+     */
     public Database (Connection connection) throws SQLException {
         this.connection = connection;
         this.statement = connection.createStatement();
