@@ -239,11 +239,12 @@ public class Main {
 
     private static void calculate(Calculator calculator, Database database, Scanner scanner) throws SQLException {
         while (true) {
-            clearScreen();
             System.out.println("Please enter expression:");
             CalculatedEntry entry = calculator.calculate(scanner.nextLine());
             if (entry == null) {
                 System.out.println("Expression is not correct. Please try again");
+                pause(scanner);
+                clearScreen();
                 continue;
             }
             System.out.println("Value = " + entry.getValue());

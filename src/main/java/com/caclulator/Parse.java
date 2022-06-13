@@ -10,7 +10,7 @@ public class Parse {
     private final ArrayList<String> formula;
 
     /**
-     * Class for parsing formula and variables into array and hashmap
+     * Class for parsing formula into array
      *
      * @param args arguments to parse
      */

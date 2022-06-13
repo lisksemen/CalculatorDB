@@ -39,7 +39,7 @@ public class Calculator {
 
 
     /**
-     * Method to calculate with not default variables
+     * Method to calculate numeric expression
      *
      * @param formula parsed expression
      * @return result
@@ -72,22 +72,6 @@ public class Calculator {
         if (stack.empty() || stack.size() > 1)
             throw new NumberFormatException();
         return stack.peek();
-    }
-
-
-    /**
-     * Method to parse variables
-     *
-     * @param args args to parse from
-     * @return Hashmap of variables
-     */
-    private HashMap<String, Double> parseVariables(String[] args) {
-        HashMap<String, Double> variables = new HashMap<>();
-        for (int i = 1; i < args.length; i++) {
-            variables.put(args[i].split("=")[0].replaceAll("\\s+", ""),
-                    Double.parseDouble(args[i].split("=")[1].replaceAll("\\s+", "").replaceAll(",", ".")));
-        }
-        return variables;
     }
 
     /**
